@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 
 const Login = ({ setAuthenticated }) => {
@@ -20,24 +20,44 @@ const Login = ({ setAuthenticated }) => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="max-w-md mx-auto p-4">
-      <h2 className="text-xl mb-4">Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="block w-full mb-2 p-2 border"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="block w-full mb-4 p-2 border"
-      />
-      <button type="submit" className="w-full bg-blue-500 text-white p-2">Login</button>
-    </form>
+    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+      <div className="w-full p-6 rounded-lg shadow-md bg-blue-400 backdrop-filter backdrop-blur-lg bg-opacity-0">
+        <form onSubmit={handleLogin} className="max-w-md mx-auto p-4">
+          <h2 className="text-3xl font-semibold text-center text-gray-300">Login</h2>
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Username</span>
+            </label>
+            <input
+              type="text"
+              placeholder="johndoe"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full input input-bordered h-10"
+            />
+          </div>
+
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full input input-bordered h-10"
+            />
+          </div>
+          <Link to='/signup' className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block">
+            Don't have an account?
+          </Link>
+          <div>
+            <button type="submit" className="btn btn-block btn-sm mt-2">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

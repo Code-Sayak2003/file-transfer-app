@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import http from "http";
 import { Server } from "socket.io";
+
 import cors from "cors";
 import bodyParser from 'body-parser';   
 
@@ -22,7 +23,7 @@ const io = new Server(server, {
     cors: {
         origin: "http://localhost:3000",
         methods: ["GET", "POST"],
-        credentials: true,
+        // credentials: true,
     }
 });
 
